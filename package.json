@@ -1,6 +1,6 @@
 {
   "name": "trello-scrum-to-latex",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Parses the Trello JSON data and writes it in LaTeX style format",
   "main": "index.js",
   "scripts": {
