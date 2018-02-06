@@ -1,0 +1,32 @@
+{
+  "name": "trello-scrum-to-latex",
+  "version": "0.0.1",
+  "description": "Parses the Trello JSON data and writes it in LaTeX style format",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "bin": {
+    "trello-scrum-to-latex": "node src/cli.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BrunnerLivio/trello-scrum-to-latex.git"
+  },
+  "keywords": [
+    "trello",
+    "scrum",
+    "latex"
+  ],
+  "author": "Livio Brunner",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/BrunnerLivio/trello-scrum-to-latex/issues"
+  },
+  "homepage": "https://github.com/BrunnerLivio/trello-scrum-to-latex#readme",
+  "dependencies": {
+    "commander": "^2.14.0",
+    "node-trello": "^1.3.0",
+    "trello-node": "^0.1.0"
+  }
+}
