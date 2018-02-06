@@ -29,6 +29,21 @@ npm i -g trello-scrum-to-latex
 1. Get your Trello appkey [from here](https://trello.com/app-key)
 2. Get your Trello secret by click on "... you can manually generate a **Token**"
 
+### CLI
+
 ```bash
 trello-scrum-to-latex --id [YOUR BOARD ID] --appkey [TRELLO APPKEY] --secret [TRELLO SECRET] -b Backlog
+```
+
+#### NodeJS
+
+```javascript
+const TrelloScrumToLatex = require('trello-scrum-to-latex');
+
+const data = await TrelloScrumToLatex({
+    id: '[YOUR BOARD ID]',
+    appKey: '[TRELLO APPKEY]',
+    secret: '[TRELLO SECRET]',
+    backlogListName: 'Backlog'
+});
 ```
