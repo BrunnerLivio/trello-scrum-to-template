@@ -1,13 +1,13 @@
 {
   "name": "trello-scrum-to-latex",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Parses the Trello JSON data and writes it in LaTeX style format",
   "main": "index.js",
   "scripts": {
     "start": "node src/index.js"
   },
   "bin": {
-    "trello-scrum-to-latex": "node src/cli.js"
+    "trello-scrum-to-latex": "src/cli.js"
   },
   "repository": {
     "type": "git",
