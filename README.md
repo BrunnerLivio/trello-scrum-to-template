@@ -23,9 +23,9 @@ trello-scrum-to-template --id YOUR_BOARD_ID --appkey TRELLO_APPKEY --secret TREL
 ### NodeJS
 
 ```javascript
-const TrelloScrumToLatex = require('trello-scrum-to-template');
+const TrelloScrumToTemplate = require('trello-scrum-to-template');
 
-const data = await TrelloScrumToLatex({
+const data = await TrelloScrumToTemplate({
     id: '[YOUR BOARD ID]',
     appKey: '[TRELLO APPKEY]',
     secret: '[TRELLO SECRET]',

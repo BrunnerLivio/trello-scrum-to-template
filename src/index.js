@@ -30,7 +30,7 @@ function getTemplate(options) {
  * Converts Trello to Scrum
  * @param {string} url The Trello URL 
  */
-function TrelloScrumToLatex(options) {
+function TrelloScrumToTemplate(options) {
     return new Promise((resolve, reject) => {
         const backlogListName = options.backlogListName || 'Backlog';
         let useBrackets = options.useBrackets;
@@ -45,4 +45,4 @@ function TrelloScrumToLatex(options) {
     });
 }
 
-module.exports = TrelloScrumToLatex;
+module.exports = TrelloScrumToTemplate;
