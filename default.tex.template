@@ -1,0 +1,42 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage[latin1]{inputenc}
+\RequirePackage{tabularx}
+
+\begin{document}
+{% for backlog in backlogs %}
+\subsection*{(( backlog.name ))}
+
+\begin{tabularx}{\textwidth}{ @{}>{\hsize=.6\hsize}X >{\hsize=1.4\hsize}X }
+    {\it Number} & S(( backlog.number )) \\
+    {\it Story Points} & (( backlog.storyPoints )) \\
+    {\it Requirements} & {\it (( backlog.requirements)) }  \\
+    {\it Priority} & (( backlog.priority )) \\
+\end{tabularx}
+
+\subsubsection*{Description}
+
+(( backlog.description ))
+
+\subsubsection*{Tasks}
+
+\begin{tabularx}{\textwidth}{ >{\hsize=.5\hsize}X >{\hsize=2.5\hsize}X >{\hsize=.5\hsize}X >{\hsize=.5\hsize}X }
+    {\bf Number} & {\bf Description} & {\bf Time} & {\bf Priority} \\
+    
+    {% for task in backlog.tasks %}
+    T1.1 &
+    (( task.name )) &
+    1h & 1 \\\\
+    {% endfor %}
+
+    \multicolumn{2}{X}{\bf{Time Sum}} & \multicolumn{2}{X}{4h}
+\end{tabularx}
+
+\subsubsection*{Acceptance Criterion}
+(( backlog.acceptanceCriterion ))
+\newpage
+{% endfor %}
+
+\end{document}
