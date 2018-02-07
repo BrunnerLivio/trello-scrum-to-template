@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Scrum Board</title>
+</head>
+
+<body>
+    <main>
+        <h1>Backlog Items</h1>
+        {% for backlog in backlogs %} 
+        <div>
+            <h2>{{ backlog.name }}</h2>
+            <p>{{ backlog.description }}</p>
+            
+            <h3>Tasks</h3>
+            <table>
+                <thead>
+                    <th>
+                        name
+                    </th>
+                </thead>
+                <tbody>
+                    {% for task in backlog.tasks %}
+                    <tr>
+                        <td>
+                            {{ task.name }}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <hr />
+        {% endfor %}
+    </main>
+</body>
+
+</html>

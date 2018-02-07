@@ -25,7 +25,7 @@ function main() {
         appKey: program.appkey,
         secret: program.secret,
         templatePath: program.template,
-        useBracktes: program.usebracktes
+        useBrackets: program.usebrackets
     })
         .then(data => console.log(data))
         .catch(err => console.error(err));

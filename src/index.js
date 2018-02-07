@@ -4,6 +4,27 @@ const path = require('path');
 const getBacklogs = require('./backlog');
 const convert2Template = require('./convert2Template');
 
+function resolveDefaultTemplate(templatePath) {
+    // Default templates
+    templatePath = templatePath.replace('default/', path.join(__dirname, '../templates/'));
+    return templatePath;
+}
+
+function getTemplate(options) {
+    let templatePath = options.templatePath;
+    let template = options.template;   
+ 
+    if (!template && !templatePath) {
+        templatePath = 'default/html.template';
+    }
+
+    if (templatePath) {
+        templatePath = resolveDefaultTemplate(templatePath);
+        template = fs.readFileSync(templatePath, 'utf8');
+    }
+
+    return template;
+}
 
 /**
  * Converts Trello to Scrum
@@ -12,19 +33,10 @@ const convert2Template = require('./convert2Template');
 function TrelloScrumToLatex(options) {
     return new Promise((resolve, reject) => {
         const backlogListName = options.backlogListName || 'Backlog';
-        let template = options.template;
-        let templatePath = options.templatePath;
         let useBrackets = options.useBrackets;
-        if (!template && !templatePath) {
-            useBrackets = true;
-            templatePath = path.join(__dirname, '../default.tex.template');
-        }
-        if (templatePath) {
-            template = fs.readFileSync(templatePath, 'utf8');
-        }
-
+        let template = getTemplate(options);
+        
         const trello = new Trello(options.appKey, options.secret);
-
         trello
             .getBoard(options.boardId)
             .then(board => getBacklogs(board, backlogListName))
