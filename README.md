@@ -3,6 +3,7 @@
 Parses the Trello data and prints it in the given template
 
 ## Use Cases
+
 - Websites
 - LaTeX Templates
 - Documentations
@@ -38,8 +39,7 @@ const data = await TrelloScrumToLatex({
 });
 ```
 
-
-# Example
+## Example
 
 The example [board on Trello](https://trello.com/b/e6ozhnNv/example-board)
 
