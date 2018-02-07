@@ -17,7 +17,7 @@ Parses the Trello data and prints it in the given template
 ### CLI
 
 ```bash
-trello-scrum-to-template --id YOUR_BOARD_ID --appkey TRELLO_APPKEY --secret TRELLO_SECRET [-b Backlog] [-t ./default.tex.template]
+trello-scrum-to-template --id YOUR_BOARD_ID --appkey TRELLO_APPKEY --secret TRELLO_SECRET [-b Backlog] [-t default/latex.template] [--usebrackets]
 ```
 
 ### NodeJS
