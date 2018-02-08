@@ -13,6 +13,9 @@
         <div>
             <h2>{{ backlog.name }}</h2>
             <p>{{ backlog.description }}</p>
+
+            <h3>Acceptance Criterion</h3>
+            <p>{{ backlog.acceptance_criterion }}</p>
             
             <h3>Tasks</h3>
             <table>

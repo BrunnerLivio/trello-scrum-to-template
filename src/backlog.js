@@ -1,4 +1,5 @@
 const getTaskByLabelId = require('./task');
+const parseDescription = require('./description-parser');
 
 function parse(text, regex) {
     const result = regex.exec(text);
@@ -14,16 +15,22 @@ function getRawBacklogsFromBoard(board, backlogListName) {
 
 function getBacklogs(board, backlogListName) {
     const backlogs = getRawBacklogsFromBoard(board, backlogListName);
-    return backlogs.map(backlog => ({
-        name: backlog.name,
-        description: parse(backlog.desc, /Description:\n(.*)/gm),
-        acceptanceCriterion: parse(backlog.desc, /Acceptance Criterion:\n(.*)/gm),
-        requirements: parse(backlog.desc, /Requirements:(.*)/gm),
-        storyPoints: parse(backlog.desc, /Story Points:(.*)/gm),
-        number: parseInt(parse(backlog.desc, /Number:(.*)/gm)),
-        priority: parseInt(parse(backlog.desc, /Priority:(.*)/gm)),
-        tasks: getTaskByLabelId(backlog.idLabels[0], board, backlogListName)
-    }));
+    return backlogs
+        .map(backlog => ({
+            name: backlog.name,
+            tasks: getTaskByLabelId(backlog.idLabels[0], board, backlogListName),
+            ...parseDescription(backlog.desc)
+        }))
+        .map(task => {
+            if (!isNaN(task.number.trim())) {
+                try {
+                    task.number = parseInt(task.number)
+                }
+                catch (err) { }
+            }
+            return task;
+        })
+        .sort((a, b) => a.number - b.number);
 }
 
 module.exports = getBacklogs;

@@ -11,7 +11,7 @@
 
 \begin{tabularx}{\textwidth}{ @{}>{\hsize=.6\hsize}X >{\hsize=1.4\hsize}X }
     {\it Number} & S(( backlog.number )) \\
-    {\it Story Points} & (( backlog.storyPoints )) \\
+    {\it Story Points} & (( backlog.story_points )) \\
     {\it Requirements} & {\it (( backlog.requirements)) }  \\
     {\it Priority} & (( backlog.priority )) \\
 \end{tabularx}
@@ -26,7 +26,7 @@
     {\bf Number} & {\bf Description} & {\bf Time} & {\bf Priority} \\
     
     {% for task in backlog.tasks %}
-    T1.1 &
+    T((backlog.number)).((task.number)) &
     (( task.name )) &
     1h & 1 \\\\
     {% endfor %}
@@ -35,7 +35,7 @@
 \end{tabularx}
 
 \subsubsection*{Acceptance Criterion}
-(( backlog.acceptanceCriterion ))
+(( backlog.acceptance_criterion ))
 \newpage
 {% endfor %}
 

@@ -1,3 +1,5 @@
+const parseDescription = require('./description-parser');
+
 
 function getTaskLists(board, backlogListName) {
     return board.lists.filter(list => list.name !== backlogListName);
@@ -12,7 +14,22 @@ function getTasks(board, backlogListName) {
 
 function getTaskByLabelId(labelId, board, backlogListName) {
     const tasks = getTasks(board, backlogListName);
-    return tasks.filter(task => task.labels.find(label => label.id === labelId));
+    return tasks
+        .filter(task => task.labels.find(label => label.id === labelId))
+        .map(task => ({
+            name: task.name,
+            ...parseDescription(task.desc)
+        }))
+        .map(task => {
+            if (!isNaN(task.number.trim())) {
+                try {
+                    task.number = parseInt(task.number)
+                }
+                catch (err) { }
+            }
+            return task;
+        })
+        .sort((a, b) => a.number - b.number);
 }
 
 
