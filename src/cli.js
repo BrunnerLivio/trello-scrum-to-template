@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 const program = require('commander');
+// @ts-ignore
 const packageJson = require('../package.json');
 const TrelloScrumToLatex = require('./index');
 
@@ -17,6 +18,15 @@ function main() {
     if (!program.id) {
         console.error('You must enter the board id with --id [id]');
         return -1;
+    }
+
+    if (!program.appkey) {
+        console.error('You must enter the Trello appkey with --appkey <appkey>')
+        return -1;
+    }
+
+    if (!program.secret) {
+        console.error('You must enter the Trello secret with --secret <secret>');
     }
 
     TrelloScrumToLatex({

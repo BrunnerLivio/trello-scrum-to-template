@@ -1,4 +1,5 @@
 const nunjucks = require('nunjucks');
+
 function convert2Template(backlogs, template, useBrackets) {
     let tags;
     if (useBrackets) {

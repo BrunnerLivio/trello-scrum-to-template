@@ -1,5 +1,5 @@
-const getTaskByLabelId = require('./task');
-const parseDescription = require('./description-parser');
+const getTaskByLabelId = require('../task');
+const parseDescription = require('../shared/description-parser');
 
 function parse(text, regex) {
     const result = regex.exec(text);

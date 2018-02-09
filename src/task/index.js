@@ -1,5 +1,4 @@
-const parseDescription = require('./description-parser');
-
+const parseDescription = require('../shared/description-parser');
 
 function getTaskLists(board, backlogListName) {
     return board.lists.filter(list => list.name !== backlogListName);
