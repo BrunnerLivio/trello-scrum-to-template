@@ -1,5 +1,6 @@
 const getTaskByLabelId = require('../task');
-const parseDescription = require('../shared/description-parser');
+const parseDescription = require('../shared/descriptionParser');
+const calculateTimeSum = require('../shared/calculateTimeSum');
 
 function parse(text, regex) {
     const result = regex.exec(text);
@@ -20,6 +21,10 @@ function getBacklogs(board, backlogListName) {
             name: backlog.name,
             tasks: getTaskByLabelId(backlog.idLabels[0], board, backlogListName),
             ...parseDescription(backlog.desc)
+        }))
+        .map(backlog => ({
+            ...backlog,
+            timesum: calculateTimeSum(backlog.tasks.map(task => task.duration))
         }))
         .map(task => {
             if (!isNaN(task.number.trim())) {

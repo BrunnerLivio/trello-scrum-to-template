@@ -1,4 +1,4 @@
-const parseDescription = require('../shared/description-parser');
+const parseDescription = require('../shared/descriptionParser');
 
 function getTaskLists(board, backlogListName) {
     return board.lists.filter(list => list.name !== backlogListName);
@@ -28,6 +28,11 @@ function getTaskByLabelId(labelId, board, backlogListName) {
             }
             return task;
         })
+        .map(task => ({
+            ...task,
+            // If undefined, use 0h
+            duration: task.duration || '0h'
+        }))
         .sort((a, b) => a.number - b.number);
 }
 

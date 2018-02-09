@@ -20,9 +20,14 @@
             <h3>Tasks</h3>
             <table>
                 <thead>
-                    <th>
-                        name
-                    </th>
+                    <tr>
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Duration
+                        </th>
+                    </tr>
                 </thead>
                 <tbody>
                     {% for task in backlog.tasks %}
@@ -30,10 +35,14 @@
                         <td>
                             {{ task.name }}
                         </td>
+                        <td>
+                            {{ task.duration }}
+                        </td>
                     </tr>
                     {% endfor %}
                 </tbody>
             </table>
+            <strong>Backlog Duration:</strong> {{ backlog.timesum }}
         </div>
         <hr />
         {% endfor %}
